@@ -48,7 +48,7 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/tensorrtx/yolov5
+CMAKE_SOURCE_DIR = ../yolov5
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/tensorrtx/yolov5/build
