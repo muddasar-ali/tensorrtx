@@ -6,7 +6,7 @@
 #include "common.hpp"
 #include "utils.h"
 #include "calibrator.h"
-#include <zmq.hpp>
+//#include <zmq.hpp>
 
 #define USE_FP16  // comment out this if want to use FP32
 #define DEVICE 0  // GPU id
@@ -665,10 +665,10 @@ int main(int argc, char** argv) {
     if(a != b ){ //trick to not having problem with zmq as the compilation takes place twice.
 
 	 //setting up the ZMQ context and socket variables <<<ZMQ>>>>
-    	void *cxt = zmq_ctx_new();
+    	//void *cxt = zmq_ctx_new();
 	
-    	void *publisher = zmq_socket(cxt, ZMQ_PUB);
-    	int bind = zmq_bind(publisher, "tcp://*:9000");
+    	//void *publisher = zmq_socket(cxt, ZMQ_PUB);
+    	//int bind = zmq_bind(publisher, "tcp://*:9000");
 
     	a=2; //end of trick
     
@@ -723,7 +723,7 @@ int main(int argc, char** argv) {
 	    cv::resize(frame, frame, cv::Size(), 0.25, 0.25); 
 	    std::vector<uchar> buffer;
 	    cv::imencode(".jpg", frame, buffer);
-            zmq_send(publisher, buffer.data(), buffer.size(), ZMQ_NOBLOCK);
+            //zmq_send(publisher, buffer.data(), buffer.size(), ZMQ_NOBLOCK);
 		
 	    gst_udpsink.write(frame);
            // cv::imwrite("../samples"+ std::to_string(afcount) + ".png", frame); //For writing the frames on the local memory. 
