@@ -657,8 +657,9 @@ int main(int argc, char** argv) {
         throw "Error when reading sample.mp4";
    
     int fourcc = cv::VideoWriter::fourcc('H','2','6','4');
-    cv::VideoWriter gst_udpsink("appsrc ! video/x-raw, format=BGR, pixel-aspect-ratio=1/1 ! queue ! videoconvert ! video/x-raw,  format=BGRx ! nvvidconv ! nvv4l2h264enc insert-vui=1 ! video/x-h264, stream-format=byte-stream, alignment=au ! h264parse ! video/x-h264, stream-format=byte-stream ! rtph264pay pt=96 config-interval=1 ! application/x-rtp, media=video, encoding-name=H264 ! udpsink host=224.1.1.1 port=5000 auto-multicast=true ", fourcc, 30, cv::Size(648, 380));
+    cv::VideoWriter gst_udpsink("appsrc ! video/x-raw, format=BGR, pixel-aspect-ratio=1/1 ! queue ! videoconvert ! video/x-raw,  format=BGRx ! nvvidconv ! nvv4l2h264enc insert-vui=1 ! video/x-h264, stream-format=byte-stream, alignment=au ! h264parse ! video/x-h264, stream-format=byte-stream ! rtph264pay pt=96 config-interval=1 ! application/x-rtp, media=video, encoding-name=H264 ! udpsink host=127.0.0.1 port=5000 ", fourcc, 30, cv::Size(648, 380));
 
+	
     int fcount = 0;
     int afcount = 0;
 
